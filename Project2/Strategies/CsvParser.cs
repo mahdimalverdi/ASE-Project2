@@ -1,9 +1,7 @@
 ﻿using Project2.Abstraction;
 using Project2.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Project2.Strategies
 {
@@ -15,9 +13,7 @@ namespace Project2.Strategies
         public IEnumerable<Person> Parse(string text)
         {
             var lines = text.Split(LineSeparator);
-
             var result = lines.Select(SplitLine).Select(GetPerson);
-
             return result;
         }
 

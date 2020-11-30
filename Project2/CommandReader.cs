@@ -2,7 +2,6 @@
 using Project2.Models;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Project2
 {
@@ -14,10 +13,15 @@ namespace Project2
         public Command Read()
         {
             var type = Console.ReadLine();
+            var text = GetText();
+            return new Command(type, text);
+        }
+
+        private static string GetText()
+        {
             var lines = GetLines();
             var text = string.Join(EndLine, lines);
-
-            return new Command(type, text);
+            return text;
         }
 
         private static IEnumerable<string> GetLines()
