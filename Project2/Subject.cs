@@ -8,8 +8,6 @@ namespace Project2
 {
     public class Subject : ISubject
     {
-        public int State { get; set; } = -0;
-
         private readonly List<IObserver> observers = new List<IObserver>();
 
         public void Attach(IObserver observer)

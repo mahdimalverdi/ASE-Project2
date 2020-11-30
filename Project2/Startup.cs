@@ -1,13 +1,13 @@
-﻿using Project2.Observers;
+﻿using Project2.Abstraction;
+using Project2.Observers;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Project2
 {
     public class Startup
     {
         private readonly string path;
+        private readonly Singleton singleton = Singleton.Instance;
 
         public Startup(string path)
         {
@@ -20,16 +20,19 @@ namespace Project2
             AttachConsoleObserve();
         }
 
-        private static void AttachConsoleObserve()
+        private void AttachConsoleObserve()
         {
-            var consoleObserve = new ConsoleObserve();
-            Singleton.Instance.Subject.Attach(consoleObserve);
+            Attach(new ConsoleObserve());
+        }
+
+        private void Attach(IObserver observer)
+        {
+            singleton.Subject.Attach(observer);
         }
 
         private void AttachCsvObserve()
         {
-            var csvObserve = new CsvObserve(path);
-            Singleton.Instance.Subject.Attach(csvObserve);
+            Attach(new CsvObserve(path));
         }
     }
 }

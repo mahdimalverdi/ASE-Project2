@@ -4,10 +4,11 @@ namespace Project2
 {
     class Program
     {
+        private const string Path = "test.csv";
+
         static void Main(string[] args)
         {
-            new Startup("test.csv").Configure();
-
+            new Startup(Path).Configure();
             var context = new Context();
 
             while (true)

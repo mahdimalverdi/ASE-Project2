@@ -7,6 +7,8 @@ namespace Project2.Observers
 {
     public class CsvObserve : IObserver
     {
+        private const string CellSeparator = ",";
+        private const string LineSeparator = "\n";
         private readonly string path;
 
         public CsvObserve(string path)
@@ -16,9 +18,9 @@ namespace Project2.Observers
 
         public void Update(Person person)
         {
-            var line = string.Join(",", person.FirstName, person.LastName, person.Age);
+            var line = string.Join(CellSeparator, person.FirstName, person.LastName, person.Age);
 
-            File.AppendAllText(path, line + "\n");
+            File.AppendAllText(path, line + LineSeparator);
         }
     }
 }
