@@ -1,5 +1,6 @@
 ﻿using Project2.Abstraction;
 using Project2.Observers;
+using Project2.Visitor;
 using System;
 
 namespace Project2
@@ -7,22 +8,24 @@ namespace Project2
     public class Startup
     {
         private readonly string path;
+        private readonly IVisitor visitor;
         private readonly Singleton singleton = Singleton.Instance;
 
-        public Startup(string path)
+        public Startup(string path, IVisitor visitor)
         {
             this.path = path ?? throw new ArgumentNullException(nameof(path));
+            this.visitor = visitor ?? throw new ArgumentNullException(nameof(visitor));
         }
 
         public void Configure()
         {
-            AttachCsvObserve();
-            AttachConsoleObserve();
+            AttachCsvObserve(visitor);
+            AttachConsoleObserve(visitor);
         }
 
-        private void AttachConsoleObserve()
+        private void AttachConsoleObserve(IVisitor visitor)
         {
-            Attach(new ConsoleObserve());
+            Attach(new ConsoleObserve(visitor));
         }
 
         private void Attach(IObserver observer)
@@ -30,9 +33,9 @@ namespace Project2
             singleton.Subject.Attach(observer);
         }
 
-        private void AttachCsvObserve()
+        private void AttachCsvObserve(IVisitor visitor)
         {
-            Attach(new CsvObserve(path));
+            Attach(new FileObserve(path, visitor));
         }
     }
 }

@@ -12,13 +12,21 @@ namespace Project2
 
         public Command Read()
         {
-            var type = Console.ReadLine();
+            string type = GetCommandType();
             var text = GetText();
             return new Command(type, text);
         }
 
+        private static string GetCommandType()
+        {
+            Console.Write("Please Enter Command Type(csv/json/xml): ");
+            var type = Console.ReadLine();
+            return type;
+        }
+
         private static string GetText()
         {
+            Console.WriteLine("Please Enter Text: ");
             var lines = GetLines();
             var text = string.Join(EndLine, lines);
             return text;

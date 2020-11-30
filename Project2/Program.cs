@@ -1,4 +1,7 @@
-﻿namespace Project2
+﻿using Project2.Abstraction;
+using System;
+
+namespace Project2
 {
     class Program
     {
@@ -6,16 +9,34 @@
 
         static void Main(string[] args)
         {
-            new Startup(Path).Configure();
-            var context = new Context();
+            Configure();
+            Run();
+        }
 
-            while (true)
-            {
-                var command = Singleton.Instance.CommandReader.Read();
-                var strategy = new ParserStrategyFactory(command.Type).Create();
-                context.SetStrategy(strategy);
-                context.Parse(command.Text);
-            }
+        private static void Run()
+        {
+            var context = new Context();
+            new Client(context).Run();
+        }
+
+        private static void Configure()
+        {
+            var visitor = GetVisitor();
+            new Startup(Path, visitor).Configure();
+        }
+
+        private static IVisitor GetVisitor()
+        {
+            string visitorType = GetVisitorType();
+            var visitor = new VisitorFactory(visitorType).Create();
+            return visitor;
+        }
+
+        private static string GetVisitorType()
+        {
+            Console.Write("Please Enter Visitor Type(csv/json): ");
+            var visitorType = Console.ReadLine();
+            return visitorType;
         }
     }
 }

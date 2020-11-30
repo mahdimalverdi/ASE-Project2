@@ -7,9 +7,16 @@ namespace Project2.Observers
 {
     internal class ConsoleObserve : IObserver
     {
+        private readonly IVisitor visitor;
+
+        public ConsoleObserve(IVisitor visitor)
+        {
+            this.visitor = visitor;
+        }
+
         public void Update(Person person)
         {
-            var line = JsonSerializer.Serialize(person);
+            var line = person.Serialize(visitor);
 
             Console.WriteLine(line);
         }
