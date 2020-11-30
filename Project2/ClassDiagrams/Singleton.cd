@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="Project2.Singleton">
+    <Position X="2.75" Y="2" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAIAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Singleton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Project2.CommandReader" Collapsed="true">
+    <Position X="6.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAAgAAAAIAAAAAgAAAAACAA=</HashCode>
+      <FileName>CommandReader.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Project2.Models.Command">
+    <Position X="8" Y="2" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAACAAAAAA=</HashCode>
+      <FileName>Models\Command.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Project2.Abstraction.ICommandReader">
+    <Position X="6.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Abstraction\ICommandReader.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Project2.Abstraction.ISubject">
+    <Position X="2.75" Y="3.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAIAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Abstraction\ISubject.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
